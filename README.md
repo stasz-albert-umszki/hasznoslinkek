@@ -22,7 +22,7 @@
 
 
 
-### Stats / ballistic \
+### Stats / ballistic 
 
 [Rakéták](https://wt.flareflo.dev/table.html) 
 
