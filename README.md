@@ -1,20 +1,20 @@
-# Hasznos linkek \ 
+# Hasznos linkek 
 
-## Warthunder \
+## Warthunder 
 
-[fórum](https://forum.warthunder.com/)\
+[fórum](https://forum.warthunder.com/)
 
-[hírek](https://warthunder.com/en/news)\
+[hírek](https://warthunder.com/en/news)
 
-[warthunder esports twitch](https://www.twitch.tv/warthunder_esports)\
+[warthunder esports twitch](https://www.twitch.tv/warthunder_esports)
 
-[skinek modok](live.warthunder.com) \
+[skinek modok](live.warthunder.com) 
 
 [WRTI](https://github.com/MeSoftHorny/WTRTI)
 
 ### Taktikák
 
-[nuclear thunder map](https://majorlier.github.io/nuclear-thunder-interactive-map/) -- \
+[nuclear thunder map](https://majorlier.github.io/nuclear-thunder-interactive-map/)
 
 [Climb & MEC](https://docs.google.com/spreadsheets/d/1rmN88QSthSclf7kxd6-miXjPFZEGmBQ5xMumqixKC6s/edit?gid=1152453200#gid=1152453200)
 
@@ -24,19 +24,19 @@
 
 ### Stats / ballistic \
 
-[Rakéták](https://wt.flareflo.dev/table.html) \
+[Rakéták](https://wt.flareflo.dev/table.html) 
 
 [ARM-ek](https://docs.google.com/spreadsheets/d/1Ve6lJA9sXQ8MRCPzVV7SB7ZEryf-cQyclAEWJzJ1q0M/edit?gid=1440022221#gid=1440022221)
 
-[Bombák](https://wt.flareflo.dev/bombing_table.html) \
+[Bombák](https://wt.flareflo.dev/bombing_table.html) 
 
-[többi](https://wt.flareflo.dev/) \
+[többi](https://wt.flareflo.dev/) 
 
-[játékos és még pár stat](https://statshark.net/) \
+[játékos és még pár stat](https://statshark.net/) 
 
-[thunderskill.com pt.2](thunderskill.com) \
+[thunderskill.com pt.2](thunderskill.com) 
 
-[leakek](https://forum.warthunder.com/u/xPorkulusx) \
+[leakek](https://forum.warthunder.com/u/xPorkulusx) 
 
 [datamine leak](https://gszabi99.github.io/)
 
