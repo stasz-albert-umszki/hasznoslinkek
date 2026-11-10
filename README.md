@@ -14,13 +14,13 @@
 
 ### Taktikák
 
+[Bombing chart](https://docs.google.com/spreadsheets/d/1oNwp_MXszU5J2dcaz5IoCtSAQ-infPdOWhwtJXqtrwU/edit?gid=1086388524#gid=1086388524)
+
 [nuclear thunder map](https://majorlier.github.io/nuclear-thunder-interactive-map/)
 
 [Climb & MEC](https://docs.google.com/spreadsheets/d/1rmN88QSthSclf7kxd6-miXjPFZEGmBQ5xMumqixKC6s/edit?gid=1152453200#gid=1152453200)
 
 [Ordnance Chart](https://docs.google.com/spreadsheets/u/1/d/1Px6G3kvcWbiS-sdIR6r4s7lSwfcxguUgJw95qj0NIzs/htmlview)
-
-
 
 ### Stats / ballistic 
 
