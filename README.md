@@ -1,10 +1,10 @@
 # Hasznos linkek
 
-Témák szerint rendezett, magyar nyelvű linkgyűjtemény játékhoz, Linuxhoz és tanuláshoz. A weboldal rövid leírásokkal segít eldönteni, melyik hivatkozás mire való.
+Témák szerint rendezett, magyar nyelvű linkgyűjtemény játékhoz, Linuxhoz és tanuláshoz. A témalapokon név és leírás szerint kereshetsz, kategóriát szűrhetsz, név szerint rendezhetsz, illetve kedvenceket menthetsz. A megnyitott linkek a főoldalon is visszakereshetők.
 
 ## Az oldal megnyitása
 
-Nyisd meg az `index.html` fájlt böngészőben, majd válassz témát a főoldalon vagy a felső navigációban. A külső hivatkozások új lapon nyílnak meg; föléjük állva rövid leírás jelenik meg.
+Nyisd meg az `index.html` fájlt böngészőben, majd válassz témát a főoldalon vagy a felső navigációban. A külső hivatkozások új lapon nyílnak meg. A rövid leírás asztali nézetben föléjük állva, mobilon közvetlenül a link alatt olvasható. A kedvencek és a legutóbb megnyitott linkek az adott böngészőben tárolódnak.
 
 ## Témák
 
@@ -61,6 +61,19 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 | `linux.html` | Linuxhoz kapcsolódó hivatkozások |
 | `suli.html` | Tanulást segítő hivatkozások |
 | `alap.css` | Közös megjelenés és reszponzív stílusok |
+| `app.js` | Keresés, szűrés, rendezés, kedvencek és előzmények |
+| `CHANGELOG.md` | Elkészült változások naplója |
+| `ideas.md` | Későbbi tartalmi és karbantartási ötletek |
 | `PICS/` | A főoldalon használt képek |
-[]()
-[]()
+
+## Új link hozzáadása
+
+1. Válaszd ki a megfelelő témalapot és linkcsoportot.
+2. Adj a linknek rövid, egyértelmű nevet és egymondatos leírást.
+3. Az új linkről készíts HTML sort a következő minta alapján, a `href`, a `data-tooltip` és az `aria-description` értékét cseréld a saját tartalomra:
+
+```html
+<li><a href="https://pelda.hu/" target="_blank" rel="noopener noreferrer" data-tooltip="Rövid leírás arról, mit találok a hivatkozáson." aria-description="Rövid leírás arról, mit találok a hivatkozáson."><span>Link neve</span><span>↗</span></a></li>
+```
+
+4. Add hozzá ugyanezt a hivatkozást a README megfelelő témaköréhez is, egy rövid magyarázattal.
