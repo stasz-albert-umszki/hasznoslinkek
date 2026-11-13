@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-13",
+  "updatedAt": "2026-11-13T17:20:39+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1917",
+      "title": "Update 2.61.0.17",
+      "date": "13 November 2026",
+      "description": "A bug that sometimes caused the game startup after logging in to take much more time than usual has been fixed."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1916",
       "title": "Update 2.61.0.13",
@@ -31,12 +37,6 @@
       "title": "Update 2.59.0.87",
       "date": "27 October 2026",
       "description": "A bug where vehicles in battle were sometimes not locked for respawn if their last destruction was counted as a crash or leave kill has been fixed. This issue could have occurred after using a backup vehicle or exhausting the tournament respawn limit."
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1911",
-      "title": "Update 2.59.0.78",
-      "date": "21 October 2026",
-      "description": "JAS39A, JAS39C (UK), JAS39EBS HU C (Italy), JAS39C (Japan) — separate countermeasure launch from fuselage-mounted dispensers has been added."
     }
   ]
 }
