@@ -165,6 +165,80 @@
     updateFilters();
   }
 
+  const updateLog = document.querySelector(".update-log");
+  if (updateLog) {
+    const dataUrl = "war-thunder-updates.json";
+    const status = updateLog.querySelector(".update-feed-status");
+    const list = updateLog.querySelector(".update-list");
+    const refreshButton = updateLog.querySelector(".update-refresh");
+
+    const loadUpdates = async () => {
+      refreshButton.disabled = true;
+      status.textContent = "Frissítések betöltése…";
+      try {
+        const response = await fetch(`${dataUrl}?v=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("A frissítési adatfájl nem érhető el.");
+        const payload = await response.json();
+        const updates = Array.isArray(payload.entries)
+          ? payload.entries.flatMap((entry) => {
+            if (!entry || typeof entry.url !== "string" || typeof entry.title !== "string") return [];
+            try {
+              const url = new URL(entry.url);
+              if (url.origin !== "https://warthunder.com" || !/^\/en\/game\/changelog\/current\/\d+$/.test(url.pathname)) return [];
+              return [{
+                url: url.href,
+                title: entry.title.slice(0, 200),
+                date: typeof entry.date === "string" ? entry.date.slice(0, 80) : "Dátum nélkül",
+                description: typeof entry.description === "string" ? entry.description.slice(0, 500) : "",
+              }];
+            } catch {
+              return [];
+            }
+          }).slice(0, 6)
+          : [];
+        if (!updates.length) throw new Error("Nincsenek megjeleníthető bejegyzések.");
+        const entries = updates.map((update) => {
+          const item = document.createElement("li");
+          item.className = "update-entry";
+          const link = document.createElement("a");
+          link.className = "update-entry-link";
+          link.href = update.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          const heading = document.createElement("strong");
+          heading.textContent = update.title;
+          const date = document.createElement("time");
+          date.className = "update-date";
+          date.textContent = update.date;
+          const summary = document.createElement("span");
+          summary.className = "update-summary";
+          summary.textContent = update.description.length > 240 ? `${update.description.slice(0, 240).trimEnd()}…` : update.description;
+          link.append(heading, date);
+          if (update.description) link.append(summary);
+          item.append(link);
+          return item;
+        });
+        list.replaceChildren(...entries);
+        const updatedDate = payload.updatedAt ? new Date(payload.updatedAt).toLocaleDateString("hu-HU") : "";
+        status.textContent = `Az adatfájlt a GitHub Actions frissíti kb. 30 percenként${updatedDate ? ` · adatfájl dátuma: ${updatedDate}` : ""}.`;
+      } catch {
+        status.textContent = list.children.length
+          ? "A frissítés most nem sikerült; az utoljára betöltött lista látható."
+          : window.location.protocol === "file:"
+            ? "A frissítési napló fájl közvetlen megnyitásakor nem tölthető be; GitHub Pagesen vagy helyi webszerveren működik."
+            : "A frissítési adatfájl most nem érhető el. Nyisd meg a teljes hivatalos naplót.";
+      } finally {
+        refreshButton.disabled = false;
+      }
+    };
+
+    refreshButton.addEventListener("click", loadUpdates);
+    loadUpdates();
+    window.setInterval(() => {
+      if (!document.hidden) loadUpdates();
+    }, 5 * 60 * 1000);
+  }
+
   const topicCards = [...document.querySelectorAll(".topic-card")];
   const topicCounts = { "warthunder.html": 19, "linux.html": 2, "suli.html": 1 };
   topicCards.forEach((card) => {

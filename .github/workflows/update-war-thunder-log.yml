@@ -1,0 +1,36 @@
+name: Update War Thunder log data
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Fetch official changelog
+        run: python scripts/update_warthunder_log.py
+
+      - name: Commit only changed log data
+        run: |
+          if git diff --quiet -- war-thunder-updates.json; then
+            echo "The update data has not changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- war-thunder-updates.json
+          git commit -m "Update War Thunder log data"
+          git push

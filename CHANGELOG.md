@@ -13,6 +13,7 @@ A projekt fontosabb változásainak összefoglalója.
 - Témánkénti linkdarabszám a főoldali kártyákon.
 - Görgetés után megjelenő vissza-a-tetejére gomb a hosszabb témalapokon.
 - Képbetöltési hiba kezelése a főoldali témakártyákon.
+- GitHub Actions által körülbelül 30 percenként frissített War Thunder játéknapló külön JSON-adatfájlban.
 - Rövid leírások minden hivatkozáshoz; mobilon a link alatt, asztali nézetben rámutatáskor vagy billentyűzetes fókusznál jelennek meg.
 - `ideas.md` a későbbi tartalmi bővítések és karbantartási feladatok nyilvántartására.
 

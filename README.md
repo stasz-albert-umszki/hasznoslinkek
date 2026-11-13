@@ -16,6 +16,7 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 
 - [Hivatalos fórum](https://forum.warthunder.com/) – kérdések, válaszok és közösségi beszélgetések.
 - [Hírek](https://warthunder.com/en/news) – hivatalos hírek, frissítések és bejelentések.
+- [Hivatalos frissítési napló](https://warthunder.com/en/game/changelog/) – a legutóbbi hat bejegyzés a GitHub Actions segítségével, körülbelül 30 percenként frissül.
 - [War Thunder Esports Twitch](https://www.twitch.tv/warthunder_esports) – esports közvetítések és versenyek.
 - [Skinek és modok](https://live.warthunder.com/) – közösségi festések, skinek és letölthető tartalmak.
 - [WTRTI](https://github.com/MeSoftHorny/WTRTI) – külső segédprogram játékbeli jármű- és teljesítményadatokhoz.
@@ -62,6 +63,9 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 | `suli.html` | Tanulást segítő hivatkozások |
 | `alap.css` | Közös megjelenés és reszponzív stílusok |
 | `app.js` | Keresés, szűrés, rendezés, kedvencek és előzmények |
+| `war-thunder-updates.json` | Az automatikusan frissített hivatalos játéknapló adatai |
+| `scripts/update_warthunder_log.py` | A hivatalos changelog beolvasása és a JSON frissítése |
+| `.github/workflows/update-war-thunder-log.yml` | 30 percenként futó, csak a JSON-t commitoló GitHub Actions workflow |
 | `CHANGELOG.md` | Elkészült változások naplója |
 | `ideas.md` | Későbbi tartalmi és karbantartási ötletek |
 | `PICS/` | A főoldalon használt képek |
@@ -77,3 +81,9 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 ```
 
 4. Add hozzá ugyanezt a hivatkozást a README megfelelő témaköréhez is, egy rövid magyarázattal.
+
+## Automatikus War Thunder napló
+
+A GitHub Actions workflow körülbelül 30 percenként ellenőrzi a hivatalos changelog oldalt. Csak akkor készít commitot, ha új vagy módosult bejegyzés van, és a commit kizárólag a `war-thunder-updates.json` fájlt érinti. A GitHub Pages az adatfájlt az oldal következő betöltésekor, vagy a nyitva hagyott oldalon legfeljebb 5 percen belül újraolvassa.
+
+A workflow automatikus futásához a GitHub Actions használatának és a `contents: write` jogosultságnak engedélyezve kell lennie a repóban. A Pages-t kiszolgáló ág legyen az alapértelmezett ág.
