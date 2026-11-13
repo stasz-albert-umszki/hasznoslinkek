@@ -24,6 +24,7 @@ A projekt fontosabb változásainak összefoglalója.
 - A War Thunder hivatkozások közösség, segédletek, statisztikák, adatbányászat és modellek szerint csoportosultak.
 - A README áttekinthető projektleírássá és linkkatalógussá bővült; új hivatkozás hozzáadásához minta is került bele.
 - A főoldali témakártyák és a navigáció a különálló témalapokra vezetnek.
+- A War Thunder napló automatizált commitjai a `warthunder-updates` ágra kerülnek; a weboldal kódját tartalmazó `main` ágat a rendszer nem módosítja.
 
 ### Ellenőrizve
 

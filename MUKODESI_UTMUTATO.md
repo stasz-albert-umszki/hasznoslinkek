@@ -6,23 +6,23 @@
 
 Ez a projekt egy egyszerű, statikus weboldal. Nincs hozzá szerveroldali alkalmazás, adatbázis, csomagkezelő vagy buildlépés. A HTML írja le az oldal tartalmát, az `alap.css` adja a közös megjelenést, az `app.js` pedig betölti a böngészős kényelmi funkciókat.
 
-A GitHub Pages a fájlokat egyszerűen kiszolgálja. A JavaScript a látogató böngészőjében fut. A War Thunder napló egy külön JSON-fájl, amelyet egy GitHub Actions workflow időnként frissít.
+A GitHub Pages a `main` ág weboldalfájljait egyszerűen kiszolgálja. A JavaScript a látogató böngészőjében fut. A War Thunder napló adatfájlja a külön `warthunder-updates` ágon él, és egy GitHub Actions workflow frissíti.
 
 ```text
 Látogató böngészője
   ├─ HTML oldalak
   ├─ alap.css
   ├─ app.js ── keresés, szűrés, kedvencek, előzmények
-  └─ war-thunder-updates.json ── War Thunder napló bejegyzései
+  └─ raw GitHub URL ── war-thunder-updates ág JSON-fájlja
 
-GitHub Actions
+GitHub Actions (a workflow a main ágon van)
   └─ scripts/update_warthunder_log.py
-       └─ lekéri a hivatalos changelogot, szükség esetén módosítja a JSON-t
+       └─ lekéri a hivatalos changelogot, csak a warthunder-updates ágra commitol
 ```
 
 ## 2. Fájlok és szerepük
 
-| Fájl vagy mappa | Szerep |
+| Fájl vagy ág | Szerep |
 | --- | --- |
 | `index.html` | Főoldal, navigációs menü és a témalapokra vezető kártyák. Az `app.js` ide teszi a kedvencek, az előzmények és a linkdarabszámok blokkot. |
 | `warthunder.html` | War Thunder linkgyűjtemény és az automatikus frissítési napló üres tartóeleme. |
@@ -30,9 +30,9 @@ GitHub Actions
 | `suli.html` | Tanulást segítő linkek. |
 | `alap.css` | Közös színek, elrendezések, interakciós állapotok, reszponzív és mozgáscsökkentő szabályok. |
 | `app.js` | Az összes főoldali és témalapi böngészős funkció. A fájl több oldalra kerül be, és csak azokat az elemeket módosítja, amelyek az adott lapon megtalálhatók. |
-| `war-thunder-updates.json` | A legutóbbi legfeljebb hat hivatalos naplóbejegyzés statikus adata. |
+| `warthunder-updates` ág | A `main` kezdeti pillanatképéből indult, az élő JSON itt található, és a bot későbbi commitjai kizárólag ezt a fájlt módosítják. |
 | `scripts/update_warthunder_log.py` | Lekéri, ellenőrzi, rendezi és szükség esetén kiírja a napló JSON-adatát. |
-| `.github/workflows/update-war-thunder-log.yml` | Időzíti vagy kézzel elindíthatóvá teszi a Python-frissítőt, majd változás esetén commitolja a JSON-t. |
+| `.github/workflows/update-war-thunder-log.yml` | A `main` ágon lévő workflow a frissítőscriptet futtatja, a megváltozott JSON-t pedig a `warthunder-updates` ágra commitolja. |
 | `PICS/` | A főoldali témakártyák képei. |
 | `README.md` | Projektbemutató, linkkatalógus és új link hozzáadásához minta. |
 | `CHANGELOG.md` | A fontosabb elkészült változások összefoglalója. |
@@ -96,16 +96,16 @@ Ha egy témalapon nyolcnál több link van, az oldal alján megjelenik egy gomb,
 
 ## 5. A War Thunder napló adatútja
 
-Az automatikus frissítés nem a látogatók böngészőjében hívja közvetlenül a War Thunder oldalt. A szerveroldali lekérést a GitHub Actions végzi, az oldal csak a saját, GitHub Pagesen közzétett JSON-ját olvassa.
+Az automatikus frissítés nem a látogatók böngészőjében hívja közvetlenül a War Thunder oldalt. A forrás lekérését a GitHub Actions végzi. A feladatok két ágra oszlanak: a `main` a weboldal és a kézi fejlesztés ága, a `warthunder-updates` pedig az automatikus naplóadatoké. A Pages a weboldalt a `main` ágról szolgálja ki, az oldal JavaScriptje pedig a külön adatág nyilvános raw GitHub URL-jéről olvas.
 
 1. A `.github/workflows/update-war-thunder-log.yml` workflow 30 percenként indulhat el (`*/30 * * * *`). A `workflow_dispatch` lehetővé teszi a kézi indítást az Actions felületéről.
-2. A workflow a `main` ágat ellenőrzi, majd Python 3-at állít be, és futtatja a `scripts/update_warthunder_log.py` fájlt. Ehhez a workflow `contents: write` jogosultságot kér, mert változás esetén vissza kell írnia a repóba.
+2. A workflow a `main` ágat ellenőrzi, majd Python 3-at állít be, és külön checkoutolja a `warthunder-updates` ágat is. A `main` frissítőscriptjét átmásolja az adatág checkoutjába, és ott futtatja, így mindig a legújabb script kódját használja, de a létező JSON-hoz viszonyít.
 3. A Python script a `https://warthunder.com/en/game/changelog/` oldalt kéri le 30 másodperces időkorláttal és saját User-Agent fejléccel.
 4. A `ChangelogParser` a forrás HTML-jében a napló widgetjeit, címét, dátumát, leírását és cikkhivatkozását keresi. Csak a várt HTTPS-című, numerikus azonosítójú changelog cikkeket fogadja el.
 5. A dátumokat feldolgozza, az azonos URL-eket kiszűri, a bejegyzéseket legújabbtól rendezi, majd legfeljebb hatot tart meg. Ha egyetlen érvényes bejegyzést sem talál, hibával megáll; nem ír üres naplót a meglévő helyére.
-6. A script összehasonlítja a beolvasott bejegyzéseket a JSON meglévő `entries` listájával. Ha azonosak, nem módosítja a fájlt. Ha eltérnek, kiírja az új tartalmat és az `updatedAt` időpontot.
-7. A workflow csak akkor készít commitot és pusholja azt a `main` ágra, ha a `war-thunder-updates.json` megváltozott. Más fájlt nem ad a commitba.
-8. A GitHub Pages a JSON-t statikus fájlként szolgálja ki. A War Thunder oldal betöltésekor, a frissítőgomb megnyomásakor, majd látható böngészőfülnél ötpercenként újra lekéri.
+6. A script összehasonlítja a beolvasott bejegyzéseket a `warthunder-updates` ágon lévő JSON `entries` listájával. Ha azonosak, nem módosítja a fájlt. Ha eltérnek, kiírja az új tartalmat és az `updatedAt` időpontot.
+7. A workflow csak akkor készít commitot és pusholja azt a `warthunder-updates` ágra, ha a JSON megváltozott. A commit kizárólag a `war-thunder-updates.json` fájlt tartalmazza. A `main` ágra nem ír automatikus commitot.
+8. A War Thunder oldal a `raw.githubusercontent.com` nyilvános URL-jéről tölti be az adatág JSON-ját. Betöltéskor, a frissítőgomb megnyomásakor, majd látható böngészőfülnél ötpercenként újra lekéri.
 
 A látogató böngészője ellenőrzi, hogy minden elem a `warthunder.com` megfelelő changelog útvonaláról származik. A cím és a leírás korlátozott hosszúságú, a megjelenítés `textContent`-tel történik. Sikeres betöltéskor a státusz a JSON `updatedAt` értékét mutatja.
 
@@ -123,7 +123,7 @@ python -m http.server 8000
 
 Ezután a `http://localhost:8000/` címen nyisd meg a főoldalt. A szervert a terminálban `Ctrl+C` állítja le. Nincs külön build vagy npm install lépés.
 
-A GitHub Pages a repó beállításai szerint publikálja a fájlokat. A `main` ágban lévő HTML, CSS, JS és JSON változások közzététel után ugyanazon a relatív útvonalon érhetők el. A statikus oldal az új látogatáskor tölti le az új tartalmat; a már nyitva lévő War Thunder lap legfeljebb öt perc múlva frissít adatot.
+A GitHub Pages a repó beállításai szerint a `main` ágból publikálja a HTML, CSS és JavaScript fájlokat. A napló külön ágon van, ezért azt a Pages nem publikálja; a böngésző közvetlenül a GitHub raw címről olvassa. Így a bot által készített adatcommitok nem keverednek a weboldal fejlesztési ágaiba.
 
 ## 7. Új link vagy témalap hozzáadása
 
@@ -144,10 +144,10 @@ Készíts új HTML-fájlt a meglévő témalapok szerkezetét követve. Kapcsolj
 | Jelenség | Ellenőrzés |
 | --- | --- |
 | A napló közvetlen fájlmegnyitáskor üres. | Használj GitHub Pages címet vagy helyi webszervert; a `file://` hozzáférés korlátozza a `fetch` kérést. |
-| A napló nem tölt be Pagesen. | Nyisd meg közvetlenül a `war-thunder-updates.json` URL-t. Ellenőrizd a böngésző fejlesztői eszközeinek Network/Console lapját, a relatív fájlútvonalat és a JSON érvényességét. |
+| A napló nem tölt be Pagesen. | Nyisd meg közvetlenül a `warthunder-updates` ágon lévő raw JSON URL-t. Ellenőrizd a böngésző fejlesztői eszközeinek Network/Console lapját, a raw URL-t és a JSON érvényességét. |
 | A JSON régi, az Actions futás hibás. | Nyisd meg a workflow futási naplóját. Vizsgáld meg a forrás HTTP-válaszát és azt, hogy változott-e a War Thunder oldal HTML-szerkezete vagy dátumformátuma. |
 | A futás sikeres, de nincs új commit. | Ez normális, ha a legújabb hat bejegyzés azonos a JSON-ban lévőkkel. A workflow szándékosan csak adatváltozáskor commitol. |
-| A workflow nem indul automatikusan vagy nem tud pusholni. | Ellenőrizd, hogy engedélyezettek-e az Actions-folyamatok, a workflow a Pages által használt alapértelmezett ágon van-e, és a repository Actions beállításai engedik-e a szükséges írási jogosultságot. Kézi indításhoz használd a `workflow_dispatch` lehetőséget. |
+| A workflow nem indul automatikusan vagy nem tud pusholni. | Ellenőrizd, hogy a workflow a default `main` ágon van-e, létezik-e a `warthunder-updates` ág, engedélyezett-e az Actions, és a repository Actions beállításai megadják-e a `contents: write` jogosultságot. Kézi indításhoz használd a `workflow_dispatch` lehetőséget. |
 | A kedvencek vagy előzmények másik böngészőben hiányoznak. | Ezek böngészőnként és webhely-eredetenként külön `localStorage`-ban vannak; nem kerülnek a GitHubra. |
 
 ## 9. Stílus és hozzáférhetőség

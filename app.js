@@ -167,7 +167,7 @@
 
   const updateLog = document.querySelector(".update-log");
   if (updateLog) {
-    const dataUrl = "war-thunder-updates.json";
+    const dataUrl = "https://raw.githubusercontent.com/stasz-albert-umszki/hasznoslinkek/warthunder-updates/war-thunder-updates.json";
     const status = updateLog.querySelector(".update-feed-status");
     const list = updateLog.querySelector(".update-list");
     const refreshButton = updateLog.querySelector(".update-refresh");

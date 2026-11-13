@@ -57,7 +57,7 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 
 ## Fájlok
 
-| Fájl | Tartalom |
+| Fájl vagy ág | Tartalom |
 | --- | --- |
 | `index.html` | Főoldal és témaválasztó |
 | `warthunder.html` | War Thunder linkek témacsoportok szerint |
@@ -65,9 +65,9 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 | `suli.html` | Tanulást segítő hivatkozások |
 | `alap.css` | Közös megjelenés és reszponzív stílusok |
 | `app.js` | Keresés, szűrés, rendezés, kedvencek és előzmények |
-| `war-thunder-updates.json` | Az automatikusan frissített hivatalos játéknapló adatai |
+| `warthunder-updates` ág | A bot ezen az ágon kizárólag az automatikusan frissített `war-thunder-updates.json` fájlt commitolja |
 | `scripts/update_warthunder_log.py` | A hivatalos changelog beolvasása és a JSON frissítése |
-| `.github/workflows/update-war-thunder-log.yml` | 30 percenként futó, csak a JSON-t commitoló GitHub Actions workflow |
+| `.github/workflows/update-war-thunder-log.yml` | 30 percenként futó workflow, amely csak a `warthunder-updates` ág JSON-fájlját commitolja |
 | `CHANGELOG.md` | Elkészült változások naplója |
 | `MUKODESI_UTMUTATO.md` | Részletes magyarázat az oldal működéséről és karbantartásáról |
 | `ideas.md` | Későbbi tartalmi és karbantartási ötletek |
@@ -87,6 +87,6 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 
 ## Automatikus War Thunder napló
 
-A GitHub Actions workflow körülbelül 30 percenként ellenőrzi a hivatalos changelog oldalt. Csak akkor készít commitot, ha új vagy módosult bejegyzés van, és a commit kizárólag a `war-thunder-updates.json` fájlt érinti. A GitHub Pages az adatfájlt az oldal következő betöltésekor, vagy a nyitva hagyott oldalon legfeljebb 5 percen belül újraolvassa.
+A `main` ág tartalmazza a weboldal kódját és a kézi változtatásaidat. A GitHub Actions körülbelül 30 percenként ellenőrzi a hivatalos changelogot, és változás esetén kizárólag a `warthunder-updates` ág `war-thunder-updates.json` fájlját commitolja. A War Thunder oldal ebből a külön ágból olvassa be az adatot; a nyitva hagyott oldal legfeljebb 5 percenként újraellenőrzi.
 
-A workflow automatikus futásához a GitHub Actions használatának és a `contents: write` jogosultságnak engedélyezve kell lennie a repóban. A Pages-t kiszolgáló ág legyen az alapértelmezett ág.
+Ehhez a `warthunder-updates` ágnak léteznie kell, a GitHub Actions használatának és a `contents: write` jogosultságnak pedig engedélyezve kell lennie a repóban. A GitHub Pages továbbra is a `main` ágat szolgálja ki.

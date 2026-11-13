@@ -20,17 +20,25 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Check out log data branch
+        uses: actions/checkout@v4
+        with:
+          ref: warthunder-updates
+          path: warthunder-updates
+
       - name: Fetch official changelog
-        run: python scripts/update_warthunder_log.py
+        run: |
+          cp scripts/update_warthunder_log.py warthunder-updates/scripts/update_warthunder_log.py
+          python warthunder-updates/scripts/update_warthunder_log.py
 
       - name: Commit only changed log data
         run: |
-          if git diff --quiet -- war-thunder-updates.json; then
+          if git -C warthunder-updates diff --quiet -- war-thunder-updates.json; then
             echo "The update data has not changed."
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- war-thunder-updates.json
-          git commit -m "Update War Thunder log data"
-          git push
+          git -C warthunder-updates config user.name "github-actions[bot]"
+          git -C warthunder-updates config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C warthunder-updates add -- war-thunder-updates.json
+          git -C warthunder-updates commit -m "Update War Thunder log data"
+          git -C warthunder-updates push origin HEAD:warthunder-updates
