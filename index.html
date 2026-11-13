@@ -1,120 +1,47 @@
 <!doctype html>
 <html lang="hu">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>linkes dolgok</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    <meta name="description" content="Hasznos linkek játékhoz, Linuxhoz és tanuláshoz, témák szerint rendezve.">
+    <title>Hasznos linkek</title>
     <link rel="stylesheet" href="alap.css">
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Főoldal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="warthunder.html">Warthunder</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="linux.html">Linux</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="suli.html">Suli</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Továbbiak
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <span class="linkdiv">
-            <div class="container text-center">
-                <div class="row row-cols-1 row-cols-xl-2 row-cols-xxl-3">
-                    <div class="col">
-                        <div class="linkes">
-                            <a href="warthunder.html">
-                                <div class="keptartas">
-                                    <div class="card" style="width: 24rem;">
-                                        <img src="PICS/warthunder.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Warthunderhez tartózó taktikai hírszerzési és adat
-                                                linkek
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="linkes">
-                            <a href="linux.html">
-                                <div class="keptartas">
-                                    <div class="card" style="width: 24rem;">
-                                        <img src="PICS/linux.jfif" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Warthunderhez tartózó taktikai hírszerzési és adat
-                                                linkek
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="linkes">
-                            <a href="suli.html">
-                                <div class="keptartas">
-                                    <div class="card" style="width: 24rem;">
-                                        <img src="PICS/homlokzat_2_4f18a4c0b0.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Warthunderhez tartózó taktikai hírszerzési és adat
-                                                linkek
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </span>
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+    <header class="site-header">
+        <a class="brand" href="index.html"><span class="brand-mark">H</span> Hasznos linkek</a>
+        <nav class="site-nav" aria-label="Fő navigáció">
+            <a class="active" aria-current="page" href="index.html">Főoldal</a>
+            <a href="warthunder.html">War Thunder</a>
+            <a href="linux.html">Linux</a>
+            <a href="suli.html">Suli</a>
+        </nav>
+    </header>
+    <main class="page-shell">
+        <section class="intro">
+            <p class="eyebrow">Gyűjtemény · témák szerint</p>
+            <h1>Hasznos linkek,<br><span>egy helyen.</span></h1>
+            <p class="intro-copy">Válassz témát, és ugorj egyenesen a keresett eszközhöz vagy tudásanyaghoz.</p>
+        </section>
+        <section class="topic-grid" aria-label="Témák">
+            <a class="topic-card topic-war" href="warthunder.html">
+                <span class="topic-index">01 / JÁTÉK</span>
+                <img src="PICS/warthunder.jpg" alt="War Thunder repülőgépek">
+                <span class="topic-card-content"><strong>War Thunder</strong><span>Hírek, közösség, taktikák és statisztikák.</span><span class="topic-cta">Linkek megnyitása <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="topic-card topic-linux" href="linux.html">
+                <span class="topic-index">02 / RENDSZER</span>
+                <img src="PICS/linux.jfif" alt="Linux asztali környezet">
+                <span class="topic-card-content"><strong>Linux</strong><span>Játékkompatibilitás és közösségi segítség.</span><span class="topic-cta">Linkek megnyitása <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="topic-card topic-school" href="suli.html">
+                <span class="topic-index">03 / TANULÁS</span>
+                <img src="PICS/homlokzat_2_4f18a4c0b0.jpg" alt="Iskola épülete">
+                <span class="topic-card-content"><strong>Suli</strong><span>Tanulást segítő oldalak és Git-gyakorlás.</span><span class="topic-cta">Linkek megnyitása <span aria-hidden="true">↗</span></span></span>
+            </a>
+        </section>
+        <footer class="site-footer"><span>Hasznos linkek</span><span>Válogatva, témák szerint rendezve.</span></footer>
+    </main>
 </body>
-
+</html>
 </html>
