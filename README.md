@@ -2,6 +2,8 @@
 
 Témák szerint rendezett, magyar nyelvű linkgyűjtemény játékhoz, Linuxhoz és tanuláshoz. A témalapokon név és leírás szerint kereshetsz, kategóriát szűrhetsz, név szerint rendezhetsz, illetve kedvenceket menthetsz. A megnyitott linkek a főoldalon is visszakereshetők.
 
+Az oldalak felépítéséről, a JavaScript-funkciókról és a War Thunder napló automatikus frissítéséről a [működési útmutató](MUKODESI_UTMUTATO.md) ad részletes magyarázatot.
+
 ## Az oldal megnyitása
 
 Nyisd meg az `index.html` fájlt böngészőben, majd válassz témát a főoldalon vagy a felső navigációban. A külső hivatkozások új lapon nyílnak meg. A rövid leírás asztali nézetben föléjük állva, mobilon közvetlenül a link alatt olvasható. A kedvencek és a legutóbb megnyitott linkek az adott böngészőben tárolódnak.
@@ -67,6 +69,7 @@ Közösségi oldalak, hírek, játékbeli segédletek, statisztikák és adatbá
 | `scripts/update_warthunder_log.py` | A hivatalos changelog beolvasása és a JSON frissítése |
 | `.github/workflows/update-war-thunder-log.yml` | 30 percenként futó, csak a JSON-t commitoló GitHub Actions workflow |
 | `CHANGELOG.md` | Elkészült változások naplója |
+| `MUKODESI_UTMUTATO.md` | Részletes magyarázat az oldal működéséről és karbantartásáról |
 | `ideas.md` | Későbbi tartalmi és karbantartási ötletek |
 | `PICS/` | A főoldalon használt képek |
 
