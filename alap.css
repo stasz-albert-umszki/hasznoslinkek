@@ -113,9 +113,32 @@ h1 span { color: var(--green); }
 .link-section h2 { margin-bottom: 14px; font: 500 1.55rem var(--serif); }
 .link-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .link-list li { border-bottom: 1px solid var(--line); }
-.link-list a { display: flex; justify-content: space-between; gap: 18px; padding: 13px 2px; color: var(--ink); text-decoration: none; }
+.link-list a { position: relative; display: flex; justify-content: space-between; gap: 18px; padding: 13px 2px; color: var(--ink); text-decoration: none; }
 .link-list a:hover { color: #b6d2bf; }
 .link-list a span:last-child { color: var(--orange); }
+.link-list a::after {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% - 2px);
+  left: 0;
+  width: min(320px, calc(100vw - 56px));
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  background: #303b36;
+  box-shadow: 0 8px 20px #00000040;
+  color: var(--ink);
+  content: attr(data-tooltip);
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.45;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+  visibility: hidden;
+}
+.link-list a:hover::after, .link-list a:focus-visible::after { opacity: 1; transform: translateY(0); visibility: visible; }
+.link-list a:hover, .link-list a:focus-visible { z-index: 3; }
 .site-footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px 0 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.82rem; }
 
 @keyframes arrive { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
