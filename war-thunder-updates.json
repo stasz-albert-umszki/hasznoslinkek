@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-13T17:20:39+00:00",
+  "updatedAt": "2026-11-16T18:19:37+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1918",
+      "title": "Update 2.61.0.20",
+      "date": "16 November 2026",
+      "description": "Z-10ME, Ka-52, A-10C, AH-1W (all variants) — the minimum closing speed for a threat to be detected by the MAWS has been reduced from 200 m/s to 80 m/s."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1917",
       "title": "Update 2.61.0.17",
@@ -31,12 +37,6 @@
       "title": "Update 2.59.0.92",
       "date": "29 October 2026",
       "description": "The Planned Battle Rating changes have come into effect."
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1912",
-      "title": "Update 2.59.0.87",
-      "date": "27 October 2026",
-      "description": "A bug where vehicles in battle were sometimes not locked for respawn if their last destruction was counted as a crash or leave kill has been fixed. This issue could have occurred after using a backup vehicle or exhausting the tournament respawn limit."
     }
   ]
 }
