@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-16T18:19:37+00:00",
+  "updatedAt": "2026-11-17T19:58:51+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1919",
+      "title": "Update 2.61.0.24",
+      "date": "17 November 2026",
+      "description": "A bug that made it impossible to be matched into an “Assault. Ground Arcade” battle when having a 13.7 vehicle lineup has been fixed."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1918",
       "title": "Update 2.61.0.20",
@@ -31,12 +37,6 @@
       "title": "Server Update 30.10.2026",
       "date": "30 October 2026",
       "description": "Battle Ratings that were different to the final table from the planned Battle Rating changes have been corrected."
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1913",
-      "title": "Update 2.59.0.92",
-      "date": "29 October 2026",
-      "description": "The Planned Battle Rating changes have come into effect."
     }
   ]
 }
