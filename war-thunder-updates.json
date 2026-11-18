@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-17T19:58:51+00:00",
+  "updatedAt": "2026-11-18T19:21:30+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1920",
+      "title": "Update 2.61.0.26",
+      "date": "18 November 2026",
+      "description": "Bf 109 F-4 — a bug that caused some of the cockpit elements to shift or disappear, some instruments to stop working and the glazing to change color has been fixed."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1919",
       "title": "Update 2.61.0.24",
@@ -31,12 +37,6 @@
       "title": "War Thunder \"Eagle's Shadow\" - Changelog",
       "date": "11 November 2026",
       "description": "Eagle’s Shadow introduces a comprehensive selection of vehicles, ranging from the modern Leopard 2A8 equipped with the Trophy APS and the Second World War Fulmar Mk.II with 8,000 rounds of ammunition, to the F-15EX featuring excellent armament options and the Su-15TM equipped with the newly added R-98 missiles."
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1914",
-      "title": "Server Update 30.10.2026",
-      "date": "30 October 2026",
-      "description": "Battle Ratings that were different to the final table from the planned Battle Rating changes have been corrected."
     }
   ]
 }
