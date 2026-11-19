@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-18T19:21:30+00:00",
+  "updatedAt": "2026-11-19T18:35:18+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1921",
+      "title": "Server Update 19.11.2026",
+      "date": "19 November 2026",
+      "description": "Su-39 — a bug where radar pod emissions were not detected by other players' RWR has been fixed."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1920",
       "title": "Update 2.61.0.26",
@@ -31,12 +37,6 @@
       "title": "Update 2.61.0.13",
       "date": "12 November 2026",
       "description": "Numerous bug fixes"
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1915",
-      "title": "War Thunder \"Eagle's Shadow\" - Changelog",
-      "date": "11 November 2026",
-      "description": "Eagle’s Shadow introduces a comprehensive selection of vehicles, ranging from the modern Leopard 2A8 equipped with the Trophy APS and the Second World War Fulmar Mk.II with 8,000 rounds of ammunition, to the F-15EX featuring excellent armament options and the Su-15TM equipped with the newly added R-98 missiles."
     }
   ]
 }
