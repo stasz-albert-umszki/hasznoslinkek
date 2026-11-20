@@ -1,7 +1,13 @@
 {
   "source": "https://warthunder.com/en/game/changelog/",
-  "updatedAt": "2026-11-19T18:35:18+00:00",
+  "updatedAt": "2026-11-20T17:58:10+00:00",
   "entries": [
+    {
+      "url": "https://warthunder.com/en/game/changelog/current/1922",
+      "title": "Update 2.61.0.33",
+      "date": "20 November 2026",
+      "description": "A shader compilation progress indicator has been added to the hangar."
+    },
     {
       "url": "https://warthunder.com/en/game/changelog/current/1921",
       "title": "Server Update 19.11.2026",
@@ -31,12 +37,6 @@
       "title": "Update 2.61.0.17",
       "date": "13 November 2026",
       "description": "A bug that sometimes caused the game startup after logging in to take much more time than usual has been fixed."
-    },
-    {
-      "url": "https://warthunder.com/en/game/changelog/current/1916",
-      "title": "Update 2.61.0.13",
-      "date": "12 November 2026",
-      "description": "Numerous bug fixes"
     }
   ]
 }
